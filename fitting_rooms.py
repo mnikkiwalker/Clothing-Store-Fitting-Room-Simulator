@@ -9,12 +9,8 @@ class DressingRoom:
 
     def request_room(self):
         #check if rooms available
-        if self.available_rooms.acquire(blocking=False):
-            return "permitted"
-        
-        else:
-            return "denied"
-
+        return self.available_rooms.acquire(blocking=False)
+    
     def release_room(self):
         #iterate room up 1
-        return
+        return self.available_rooms.release()
